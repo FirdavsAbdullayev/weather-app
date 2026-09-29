@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ob-havo Ilovasi</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-gradient-to-br from-blue-400 to-blue-700 min-h-screen flex items-center justify-center p-4">
+    
+    <div class="bg-white/20 backdrop-blur-md rounded-3xl p-8 w-full max-w-md shadow-2xl text-white">
+        <!-- Header / Search -->
+        <div class="flex items-center bg-white/30 rounded-full p-2 mb-8">
+            <input 
+                type="text" 
+                id="city-input"
+                placeholder="Shahar nomini kiriting (masalan, Tashkent)" 
+                class="bg-transparent border-none outline-none text-white placeholder-white/70 flex-grow px-4"
+                value="Tashkent"
+            >
+            <button id="search-btn" class="bg-white text-blue-500 hover:bg-gray-100 rounded-full w-10 h-10 flex items-center justify-center transition-colors">
+                <i class="fas fa-search"></i>
+            </button>
+        </div>
+
+        <!-- Weather Display -->
+        <div id="weather-info" class="text-center transition-opacity duration-300">
+            <h2 id="city-name" class="text-4xl font-bold mb-2">Toshkent</h2>
+            
+            <div class="my-6">
+                <i id="weather-icon" class="fas fa-cloud-sun text-6xl mb-4"></i>
+                <h1 class="text-6xl font-bold">
+                    <span id="temperature">25</span>°C
+                </h1>
+                <p id="weather-description" class="text-xl mt-2 capitalize">Ochiq havo</p>
+            </div>
+
+            <!-- Details -->
+            <div class="grid grid-cols-2 gap-4 mt-8 pt-6 border-t border-white/30">
+                <div class="flex items-center justify-center gap-3">
+                    <i class="fas fa-water text-2xl text-blue-200"></i>
+                    <div class="text-left">
+                        <p class="text-sm text-gray-200">Namlik</p>
+                        <p class="font-semibold"><span id="humidity">45</span>%</p>
+                    </div>
+                </div>
+                <div class="flex items-center justify-center gap-3">
+                    <i class="fas fa-wind text-2xl text-blue-200"></i>
+                    <div class="text-left">
+                        <p class="text-sm text-gray-200">Shamol</p>
+                        <p class="font-semibold"><span id="wind-speed">5</span> km/s</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Loading / Error states -->
+        <div id="status-message" class="hidden text-center text-lg mt-4">
+            Yuklanmoqda...
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
