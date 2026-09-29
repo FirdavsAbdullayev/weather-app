@@ -1,25 +1,84 @@
-/* We use Tailwind CSS via CDN, so this file is just for any custom styles or animations */
-
+/* Google'dan zamonaviy 'Poppins' shriftini chaqirib olamiz */
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
 
+/* Butun sahifa uchun shriftni o'rnatish */
 body {
     font-family: 'Poppins', sans-serif;
+    /* Orqa fon qotib turishi va chiroyli ko'rinishi uchun */
+    background-attachment: fixed;
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-    width: 8px;
+/* 1. GLASSMORPHISM (Shisha effekti) ni mukammallashtirish */
+.backdrop-blur-md {
+    -webkit-backdrop-filter: blur(16px);
+    backdrop-filter: blur(16px);
+    /* Chekkalarga nozik oq chiziq qo'shish - haqiqiy shisha effektini beradi */
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    /* Karta orqasiga yumshoq soya */
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.2);
 }
 
-::-webkit-scrollbar-track {
-    background: rgba(255, 255, 255, 0.1);
+/* 2. Qidiruv qutisi (Input) autofill (avtomatik to'ldirish) muammosini tuzatish */
+input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active {
+    -webkit-box-shadow: 0 0 0 30px transparent inset !important;
+    -webkit-text-fill-color: white !important;
+    transition: background-color 5000s ease-in-out 0s;
 }
 
-::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3);
-    border-radius: 4px;
+/* Qidiruv qutisining placeholder rangi */
+input::placeholder {
+    color: rgba(255, 255, 255, 0.7);
+    font-weight: 300;
 }
 
-::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
+/* 3. OB-HAVO IKONKASI UCHUN SUZUVCHI (FLOAT) ANIMATSIYA */
+#weather-icon {
+    animation: float 3s ease-in-out infinite;
+    /* Ikonkaga 3D effekt berish uchun soya */
+    filter: drop-shadow(0 10px 15px rgba(0, 0, 0, 0.2));
+}
+
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-12px); }
+    100% { transform: translateY(0px); }
+}
+
+/* 4. QIDIRUV TUGMASI (Search Button) INTERAKSIYASI */
+#search-btn {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+#search-btn:hover {
+    transform: scale(1.08);
+    box-shadow: 0 0 15px rgba(255, 255, 255, 0.6);
+}
+
+#search-btn:active {
+    transform: scale(0.95);
+}
+
+/* 5. MA'LUMOTLAR PAYDO BO'LISH ANIMATSIYASI */
+/* Bu klassni script.js da yangi shahar qidirilganda qo'shib/olib tashlashingiz mumkin */
+.fade-in {
+    animation: fadeInUp 0.6s ease-out forwards;
+}
+
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(20px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* Pastki detallar ikonkalari uchun yengil soya */
+.fa-water, .fa-wind {
+    filter: drop-shadow(0 2px 4px rgba(0,0,0,0.1));
 }
